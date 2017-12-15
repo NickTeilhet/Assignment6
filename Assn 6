@@ -1,0 +1,104 @@
+class media
+{
+  constructor(name, duration)
+  {
+    this._name = name
+    this._duration = duration
+  }
+
+  display()
+  {
+    console.log(this._name)
+    console.log(this._duration)
+  }
+}
+
+
+
+class music extends media
+{
+  constructor(name, duration, artist)
+  {
+    super(name, duration)
+    this._artist = artist
+  }
+
+  display()
+  {
+    super.display()
+    console.log(this._artist)
+  }
+}
+
+
+
+class podcasts extends media
+{
+  constructor(name, duration)
+  {
+    super(name, duration)
+  }
+}
+
+
+
+class movies extends media
+{
+  constructor(name, duration, rating)
+  {
+    super(name, duration)
+    this._rating = rating
+  }
+
+  display()
+  {
+    super.display()
+    console.log(this._rating)
+  }
+}
+
+
+
+class playlist
+{
+  //_mediaList = []
+
+  constructor()
+  {
+    this._mediaList = []
+    this._currentLocation = 0
+  }
+
+  next()
+  {
+    if (this._currentLocation + 1 < this._mediaList.length)
+    {
+      this._currentLocation++
+    }
+    else
+    {
+      this._currentLocation = 0
+    }
+  }
+
+  add(media)
+  {
+    this._mediaList.push(media)
+    this._mediaList.sort()
+  }
+
+  playing()
+  {
+    this._mediaList[this._currentLocation].display()
+  }
+}
+
+
+
+
+pl = new playlist()
+pl.add(new music("what", 15, "The Beatles"))
+pl.playing()
+pl.add(new movies("hello", 3, "hill"))
+pl.next()
+pl.playing()
